@@ -36,15 +36,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $uploadImg = $request->image;
+
+        if ($request->file('image')) {
+            $img = $request->file('image');
+            $uploadImg = $img->store('/img/users', 'public');
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'image' => $uploadImg,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        $user->attachRole('user');
 
         return redirect(RouteServiceProvider::HOME);
     }
