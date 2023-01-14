@@ -11,8 +11,9 @@
     @yield('page_style')
 
     @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
+        <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
+            integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('admin/dist/css/arabic_style.css') }}">
-        <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">
     @endif
 
 </head>
@@ -29,14 +30,14 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class=" breadcrumb-item nav-item d-none d-sm-inline-block"><a href="{{ url('/') }}"
-                        class="nav-link pr-1 p-0  h-auto text-capitalize">{{__('home')}}</a></li>
+                        class="nav-link pr-1 p-0  h-auto text-capitalize">{{ __('Home') }}</a></li>
                 <li class="breadcrumb-item nav-item d-none d-sm-inline-block active text-capitalize">
-                    {{ __('dashboard') }}</li>
+                    {{ __('Dashboard') }}</li>
             </ul>
 
 
-                <!-- SEARCH FORM -->
-                {{-- <form class="form-inline ml-3">
+            <!-- SEARCH FORM -->
+            {{-- <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
@@ -83,7 +84,7 @@
                         @csrf
                         <button type="submit" style="border: none !important;outline: none;"
                             class="nav-link border-0 bg-transparent">
-                            <i class="fas fa-sign-out-alt mr-1"></i>{{ __('logout') }}
+                            <i class="fas fa-sign-out-alt mr-1"></i>{{ __('Logout') }}
                         </button>
                     </form>
                 </li>
@@ -122,7 +123,7 @@
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p class="text-capitalize">
-                                    {{ __('dashboard') }}
+                                    {{ __('Dashboard') }}
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -130,19 +131,19 @@
                                 <li class="nav-item">
                                     <a href="./index.html" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('dashboard') }}</span> v1</p>
+                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v1</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="./index2.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('dashboard') }}</span> v2</p>
+                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v2</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="./index3.html" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('dashboard') }}</span> v3</p>
+                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v3</p>
                                     </a>
                                 </li>
                             </ul>
