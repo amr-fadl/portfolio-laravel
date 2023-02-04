@@ -8,7 +8,17 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+
     @yield('page_style')
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     @if (LaravelLocalization::getCurrentLocaleDirection() == 'rtl')
         <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css"
@@ -16,10 +26,94 @@
         <link rel="stylesheet" href="{{ asset('admin/dist/css/arabic_style.css') }}">
     @endif
 
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/slimselect.css') }}">
+    <style>
+        [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active,.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+            background-color: rgba(255,255,255,.1);
+            box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+            color: #fff;
+        }
+        .form-group {
+            max-width: 300px;
+        }
+        select
+        .ss-multi-selected {
+            height: 100%;
+            width: 100%;
+        }
+        .ss-main  {
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid #f0f0f0 !important;
+            padding: 0;
+        }
+        .ss-main .ss-multi-selected .ss-values {
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+        .ss-main {
+            position: relative;
+            display: block;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: .5px;
+            color: #939393;
+        }
+        .ss-main .ss-single-selected{
+            padding: 0;
+        }
+        .ss-main .ss-single-selected{
+            /* height: 15px; */
+        }
+        .ss-main.form-control {
+            height: auto;
+            padding-bottom: 3px;
+            /* padding-top: 10px;
+            padding-bottom: 10px; */
+        }
+        .ss-main,.ss-main .ss-content.ss-open{
+            /* position: absolute;
+            right: 0;
+            top: 4px; */
+            width: 100% !important;
+        }
+        .ss-main .ss-multi-selected,.ss-main .ss-single-selected {
+            border: none;
+            background-color: transparent;
+        }
+        .ss-main .ss-multi-selected .ss-values {
+            /* flex-wrap: nowrap; */
+            justify-content: flex-start;
+        }
+        .ss-main .ss-content.ss-open {
+            width: 150px;
+            right: 0;
+        }
+        /* .ss-main .ss-multi-selected .ss-values .ss-value {
+            background-color: #17a2b8;
+        } */
+        .ss-main .ss-content .ss-search{
+            display: none;
+        }
+        .ss-main .ss-multi-selected .ss-values .ss-value {
+            background: transparent;
+            color: #939393;
+            border: #93939333 1px solid;
+            display: flex;
+            /* width: 115px;
+            overflow: hidden; */
+            text-align: right;
+            font-size: 8px
+        }
+    </style>
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
     <div class="wrapper">
+        @include('sweetalert::alert')
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light pt-3 pb-3 justify-content-between">
@@ -80,7 +174,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" class="mt-0" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" style="border: none !important;outline: none;"
                             class="nav-link border-0 bg-transparent">
@@ -106,7 +200,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('storage/' . Auth::user()->image) }}"
+                        <img src="{{ asset('uploads/users/' . Auth::user()->image) }}"
                             style="height: 40px; width: 40px; object-fit: cover" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
@@ -119,95 +213,54 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p class="text-capitalize">
-                                    {{ __('Dashboard') }}
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p><span class="text-capitalize">{{ __('Dashboard') }}</span> v3</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
+                            <a href="{{ route('user.index') }}" class="nav-link  {{ request()->is('dashboard/user') ? 'active' : '' }} ">
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
+                                    {{ __('Users') }}
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link  {{ request()->is('dashboard/about/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Layout Options
+                                    {{ __('Portfolio') }}
                                     <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
+                                    <span class="badge badge-info right numOfChild">6</span>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation</p>
+                            <ul class="nav nav-treeview ">
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('headerhome.index') }}" class="nav-link">
+                                        <p>{{ __('Header') }}</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Top Navigation + Sidebar</p>
+                                <li class="nav-item pl-3  {{ request()->is('*dashboard/about/*') ? 'menu-open' : '' }}">
+                                    <a href="#" class="nav-link  {{ request()->is('*dashboard/about/*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('About') }}
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right numOfChild">6</span>
+                                        </p>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/boxed.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Boxed</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Sidebar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Navbar</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/fixed-footer.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Fixed Footer</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/layout/collapsed-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Collapsed Sidebar</p>
-                                    </a>
+                                    <ul class="nav nav-treeview {{ request()->is('*dashboard/about/*') ? 'menu-open' : '' }}">
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('about.index') }}" class="nav-link {{ request()->is('*dashboard/about/about') ? 'active' : '' }}">
+                                                <p>{{ __('About') }}</p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('skill.index') }}" class="nav-link {{ request()->is('*dashboard/about/skill*') ? 'active' : '' }}">
+                                                <p>{{ __('Skills') }}</p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('education.index') }}" class="nav-link {{ request()->is('*dashboard/about/education*') ? 'active' : '' }}">
+                                                <p>{{ __('Education') }}</p>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>

@@ -15,7 +15,58 @@
 </div>
 <!-- ./wrapper -->
 
+{{-- <script src="{{ asset('admin/dist/js/jquery.js') }}"></script> --}}
+
+<!-- jQuery -->
+<script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+
 @yield('page_script')
 
+<script src="{{ asset('admin/dist/js/slimselect.min.js') }}"></script>
+<script>
+    /* Multiple */
+
+
+    let singleSelect = document.querySelectorAll('select:not([multiple]'),
+    multipleSelect = document.querySelector('select[multiple]')
+
+
+    if (singleSelect) {
+        document.querySelectorAll('select:not([multiple]').forEach(e => {
+            new SlimSelect({
+                select: e,
+            });
+        })
+    }
+
+    if (multipleSelect) {
+        new SlimSelect({
+            select: 'select[multiple]'
+        });
+    }
+
+    function showPrev(event , input) {
+        event.target.files.length > 0 ? document.querySelector('._img').src = URL.createObjectURL(event.target
+            .files[0]) : '';
+            input.nextElementSibling.style.borderColor = '#24cf6064'
+            input.nextElementSibling.style.color = '#24cf6064'
+            // input.nextSibling.style.borderColor = '#24cf6064'
+    }
+
+
+    let numOfChild = document.querySelectorAll('.numOfChild');
+    numOfChild.forEach(e => {
+        e.innerText = e.closest('a').nextElementSibling.children.length
+    })
+
+
+
+</script>
 </body>
 </html>

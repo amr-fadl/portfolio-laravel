@@ -214,10 +214,10 @@ label {
 	--bs-gutter-x: 0;
 }
 .custom-container {
-    max-width: 1590px;
-	@media #{$xxl} {
-        max-width: 1530px;
-    }
+    // max-width: 1590px;
+	// @media #{$xxl} {
+    //     max-width: 1530px;
+    // }
 	@media #{$xl} {
         max-width: 1320px;
     }

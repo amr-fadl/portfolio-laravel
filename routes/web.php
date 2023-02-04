@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\About\SkillController;
+use App\Http\Controllers\HeaderhomeController;
+use App\Http\Controllers\About\AboutController;
+use App\Http\Controllers\About\EducationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -22,19 +27,48 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', function () {
-            return view('welcome');
+
+        // frontend
+
+        // Route::prefix('/')->group(function (){
+        // });
+
+        Route::get('', [HomeController::class,'index']);
+        Route::get('/about', [HomeController::class,'about']);
+
+        // dashboard
+
+        Route::middleware(['auth', 'verified','goToDashboard'])->group(function () {
+            Route::get('/dashboard', function () {
+                return view('dashboard');
+            });
+
+            Route::prefix('dashboard')->group(function(){
+                Route::resource('user' , UserController::class); // users
+
+                Route::resource('headerhome' , HeaderhomeController::class); // header home
+
+                // about
+                Route::prefix('about')->group(function(){
+
+                    Route::resource('about' , AboutController::class); // about
+                    Route::resource('skill' , SkillController::class); // skills
+                    Route::resource('education' , EducationController::class); // education
+
+                });
+            });
+
         });
 
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->middleware(['auth', 'verified'])->name('dashboard');
 
-        Route::middleware('auth')->group(function () {
-            Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-            Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-            Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-        });
+        // Route::prefix('/')->group(function(){
+        // });
+
+        // Route::middleware('auth')->group(function () {
+        //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        // });
         require __DIR__ . '/auth.php';
     }
 );

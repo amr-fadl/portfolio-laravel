@@ -17,11 +17,13 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
         $this->call(UserSeeder::class);
 
-        // \App\Models\User::factory(10)->create();
+        // Header Home
+        $this->call(HeaderHomeSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // About
+        $this->call(AboutSeeder::class);
+        $this->call(SkillSeeder::class);
+        $this->call(EducationSeeder::class);
+
     }
 }
