@@ -204,12 +204,6 @@ label {
   opacity: 1;
 }
 
-*:-ms-input-placeholder {
-  color: #191B1E;
-  font-size: 14px;
-  opacity: 1;
-}
-
 *::placeholder {
   color: #191B1E;
   font-size: 14px;
@@ -312,7 +306,6 @@ label {
 =============================*/
 .btn {
   -webkit-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   -moz-user-select: none;
   background: #0054FF none repeat scroll 0 0;
@@ -1914,7 +1907,6 @@ label {
   width: 100%;
   z-index: 99;
   background: #fff;
-  -webkit-animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
   animation: 1000ms ease-in-out 0s normal none 1 running fadeInDown;
   box-shadow: 0 10px 15px rgba(25, 25, 25, 0.1);
   border-radius: 0;
@@ -2587,28 +2579,16 @@ Breadcrumb
   border: 1px solid #e3e3e3;
   transform: translate(-50%, -50%) scale(1);
   border-radius: 50%;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  animation-delay: 1s;
   z-index: -1;
   animation: pulse-border 1500ms linear infinite;
   -webkit-animation: pulse-border 1500ms linear infinite;
 }
 .banner__video .popup-video::after {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  animation-delay: 2s;
 }
 
 @keyframes pulse-border {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.5);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes pulse-border {
   0% {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
@@ -3548,10 +3528,6 @@ Breadcrumb
   font-size: 15px;
   color: #A1A1A1;
 }
-.services__sidebar .sidebar__contact input:-ms-input-placeholder {
-  font-size: 15px;
-  color: #A1A1A1;
-}
 .services__sidebar .sidebar__contact input::placeholder {
   font-size: 15px;
   color: #A1A1A1;
@@ -3568,10 +3544,6 @@ Breadcrumb
   max-height: 60px;
 }
 .services__sidebar .sidebar__contact textarea::-moz-placeholder {
-  font-size: 15px;
-  color: #A1A1A1;
-}
-.services__sidebar .sidebar__contact textarea:-ms-input-placeholder {
   font-size: 15px;
   color: #A1A1A1;
 }
@@ -4022,17 +3994,6 @@ Breadcrumb
 .portfolio #portfolioTabContent .tab-pane.active {
   animation: slide-down 0.3s ease-out;
   -webkit-animation: slide-down 0.3s ease-out;
-}
-
-@-webkit-keyframes slide-down {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 @keyframes slide-down {
   0% {
@@ -5119,11 +5080,6 @@ Breadcrumb
   font-size: 15px;
   color: #A2A0A6;
 }
-.blog__sidebar .search-form input:-ms-input-placeholder {
-  font-weight: 500;
-  font-size: 15px;
-  color: #A2A0A6;
-}
 .blog__sidebar .search-form input::placeholder {
   font-weight: 500;
   font-size: 15px;
@@ -5595,10 +5551,6 @@ Breadcrumb
   font-size: 15px;
   color: #68666C;
 }
-.comment__form form input:not([type=checkbox]):-ms-input-placeholder, .comment__form form textarea:-ms-input-placeholder {
-  font-size: 15px;
-  color: #68666C;
-}
 .comment__form form input:not([type=checkbox])::placeholder, .comment__form form textarea::placeholder {
   font-size: 15px;
   color: #68666C;
@@ -5618,7 +5570,6 @@ Breadcrumb
 .comment__form form .checkbox-grp label {
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 
@@ -5767,9 +5718,6 @@ Breadcrumb
 .homeContact__form form input::-moz-placeholder {
   color: #68666C;
 }
-.homeContact__form form input:-ms-input-placeholder {
-  color: #68666C;
-}
 .homeContact__form form input::placeholder {
   color: #68666C;
 }
@@ -5798,9 +5746,6 @@ Breadcrumb
   transition: all 0.3s ease-out 0s;
 }
 .homeContact__form form textarea::-moz-placeholder {
-  color: #68666C;
-}
-.homeContact__form form textarea:-ms-input-placeholder {
   color: #68666C;
 }
 .homeContact__form form textarea::placeholder {
@@ -5903,10 +5848,6 @@ Breadcrumb
   margin-bottom: 30px;
 }
 .contact__form input::-moz-placeholder, .contact__form textarea::-moz-placeholder {
-  font-size: 15px;
-  color: #68666C;
-}
-.contact__form input:-ms-input-placeholder, .contact__form textarea:-ms-input-placeholder {
   font-size: 15px;
   color: #68666C;
 }
@@ -6082,20 +6023,6 @@ Breadcrumb
 }
 
 @keyframes rasalina-spin {
-  0%, 100% {
-    box-shadow: 15px 15px #0054FF, -15px 15px #FCAF17, -15px -15px #0054FF, 15px -15px #FCAF17;
-  }
-  25% {
-    box-shadow: -15px 15px #FCAF17, -15px -15px #0054FF, 15px -15px #FCAF17, 15px 15px #0054FF;
-  }
-  50% {
-    box-shadow: -15px -15px #0054FF, 15px -15px #FCAF17, 15px 15px #0054FF, -15px 15px #FCAF17;
-  }
-  75% {
-    box-shadow: 15px -15px #FCAF17, 15px 15px #0054FF, -15px 15px #FCAF17, -15px -15px #0054FF;
-  }
-}
-@-webkit-keyframes rasalina-spin {
   0%, 100% {
     box-shadow: 15px 15px #0054FF, -15px 15px #FCAF17, -15px -15px #0054FF, 15px -15px #FCAF17;
   }
@@ -6344,9 +6271,6 @@ body.active-dark-mode p {
 .active-dark-mode .homeContact__form form input::-moz-placeholder {
   color: #9099AB;
 }
-.active-dark-mode .homeContact__form form input:-ms-input-placeholder {
-  color: #9099AB;
-}
 .active-dark-mode .homeContact__form form input::placeholder {
   color: #9099AB;
 }
@@ -6356,9 +6280,6 @@ body.active-dark-mode p {
   color: #9099AB;
 }
 .active-dark-mode .homeContact__form form textarea::-moz-placeholder {
-  color: #9099AB;
-}
-.active-dark-mode .homeContact__form form textarea:-ms-input-placeholder {
   color: #9099AB;
 }
 .active-dark-mode .homeContact__form form textarea::placeholder {

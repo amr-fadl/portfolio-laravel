@@ -20,9 +20,7 @@ class UserSeeder extends Seeder
 
         // users seeder data
         $users = [
-            ['name' => 'amr gamal', 'email' => 'amrfa377@gmail.com','password' => '2536001', 'role' => 'owner' , 'permission' => ['users_create','users_read','users_update','users_delete']],
-            ['name' => 'super admin', 'email' => 'super@admin.com','password' => '123456789', 'role' => 'super_admin' , 'permission' => ['users_create','users_read','users_update']],
-            ['name' => 'ahmed', 'email' => 'ahmed@ahmed.com','password' => '123456789', 'role' => 'user' , 'permission' => []],
+            ['name' => 'amr gamal', 'email' => 'amrfa377@gmail.com','password' => '2536001', 'role' => 'owner' , 'permission' => ['users_read','users_update']],
         ];
 
         // create all permission

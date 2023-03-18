@@ -18,9 +18,14 @@
                         @csrf
                         @method('PUT')
                         <div class="mt-3">
-                            <label for="inputName">Title</label>
-                            <input type="text" name="title" value="{{ $data->title }}" id="inputTitle" class="form-control">
-                            <x-input-error :messages="$errors->get('title')" class="errors" />
+                            <label for="title_section">{{__('Title Section')}}</label>
+                            <input type="text" name="title_section" value="{{ $data->title_section }}" id="title_section" class="form-control">
+                            <x-input-error :messages="$errors->get('title_section')" class="errors" />
+                        </div>
+                        <div class="mt-3">
+                            <label for="sub_title_section">{{__('Sub Title')}}</label>
+                            <input type="text" name="sub_title_section" value="{{ $data->sub_title_section }}" id="sub_title_section" class="form-control">
+                            <x-input-error :messages="$errors->get('sub_title_section')" class="errors" />
                         </div>
                         <div class="mt-3">
                             <label for="inputexperience">experience</label>

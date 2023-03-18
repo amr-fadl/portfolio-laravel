@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title_section');
+            $table->string('sub_title_section');
             $table->string('experience');
             $table->text('mini_description');
             $table->text('description');

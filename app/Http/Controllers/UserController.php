@@ -30,23 +30,23 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $allData = User::all();
-        return view('admin.user.all', compact('allData'));
-    }
+    // public function index()
+    // {
+    //     // $allData = User::all();
+    //     // return view('admin.user.all', compact('allData'));
+    // }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $allRole = Role::all();
-        $allPerm = Permission::all();
-        return view('admin.user.add', get_defined_vars());
-    }
+    // public function create()
+    // {
+    //     $allRole = Role::all();
+    //     $allPerm = Permission::all();
+    //     return view('admin.user.add', get_defined_vars());
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -54,47 +54,47 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'image' => ['image', 'mimes:jpg,jpag,bmp,png', 'max:2048']
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+    //         'password' => ['required', 'confirmed', Rules\Password::defaults()],
+    //         'image' => ['image', 'mimes:jpg,jpag,bmp,png', 'max:2048']
+    //     ]);
 
 
-        $request_data = $request->only('name', 'email');
+    //     $request_data = $request->only('name', 'email');
 
-        if ($request->file('image')) {
-            // $imgName = uniqid() . $request->file('image')->getClientOriginalName();
-            // $request->file('image')->move(public_path('uploads/users'), $imgName);
-            // $request_data['image'] =  $imgName;
-
-
-
-            $imgName = uniqid() . $request->file('image')->getClientOriginalName();
-
-            Image::make($request->file('image'))->resize(300, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(public_path('uploads/users/' . $imgName));
-
-            $request_data['image'] = $imgName;
+    //     if ($request->file('image')) {
+    //         // $imgName = uniqid() . $request->file('image')->getClientOriginalName();
+    //         // $request->file('image')->move(public_path('uploads/users'), $imgName);
+    //         // $request_data['image'] =  $imgName;
 
 
-        }
 
-        $request_data['password'] = Hash::make($request->password);
+    //         $imgName = uniqid() . $request->file('image')->getClientOriginalName();
 
-        $user = User::create($request_data);
+    //         Image::make($request->file('image'))->resize(300, null, function ($constraint) {
+    //             $constraint->aspectRatio();
+    //         })->save(public_path('uploads/users/' . $imgName));
 
-        $user->attachRole($request->user_role);
-        $user->attachPermissions($request->user_permissions);
+    //         $request_data['image'] = $imgName;
 
-        toast('add user success','success')->timerProgressBar();
 
-        return redirect()->route('user.index');
-    }
+    //     }
+
+    //     $request_data['password'] = Hash::make($request->password);
+
+    //     $user = User::create($request_data);
+
+    //     $user->attachRole($request->user_role);
+    //     $user->attachPermissions($request->user_permissions);
+
+    //     toast('add user success','success')->timerProgressBar();
+
+    //     return redirect()->route('user.index');
+    // }
 
     /**
      * Display the specified resource.
@@ -102,11 +102,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    // public function show(User $user)
+    // {
+    //     $allRole = Role::all();
+    //     $allPerm = Permission::all();
+    //     return view('admin.user.add', get_defined_vars());
+    // }
+
+    public function index()
     {
-        $allRole = Role::all();
-        $allPerm = Permission::all();
-        return view('admin.user.add', get_defined_vars());
+        // $allRole = Role::all();
+        // $allPerm = Permission::all();
+        $user = User::get()->first();
+        return view('admin.user.edit', get_defined_vars());
     }
 
     /**
@@ -166,8 +174,8 @@ class UserController extends Controller
 
         $user->update($request_data);
 
-        $user->syncRoles([$request->user_role]);
-        $user->syncPermissions($request->user_permissions);
+        // $user->syncRoles([$request->user_role]);
+        // $user->syncPermissions($request->user_permissions);
 
         toast('add user success','success')->timerProgressBar();
 
@@ -180,18 +188,18 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
-    {
-        $user->detachRoles($user->Roles);
-        $user->detachPermissions($user->Permissions);
-        if($user->image != 'user.jpg')
-        {
-            // unlink(public_path('uploads/users/' . $user->image));
-            Storage::disk('public_uploads')->delete('users/' . $user->image);
-        }
+    // public function destroy(User $user)
+    // {
+    //     $user->detachRoles($user->Roles);
+    //     $user->detachPermissions($user->Permissions);
+    //     if($user->image != 'user.jpg')
+    //     {
+    //         // unlink(public_path('uploads/users/' . $user->image));
+    //         Storage::disk('public_uploads')->delete('users/' . $user->image);
+    //     }
 
-        $user->delete();
-        toast('delete user success','warning')->timerProgressBar();
-        return back() ;
-    }
+    //     $user->delete();
+    //     toast('delete user success','warning')->timerProgressBar();
+    //     return back() ;
+    // }
 }

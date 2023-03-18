@@ -52,8 +52,32 @@
     }
 
     function showPrev(event , input) {
-        event.target.files.length > 0 ? document.querySelector('._img').src = URL.createObjectURL(event.target
-            .files[0]) : '';
+        console.log(event.target.files);
+
+        let element = document.querySelector('._img');
+
+        if (event.target.files.length == 1) {
+            event.target.files.length > 0 ? element.src = URL.createObjectURL(event.target
+                .files[0]) : '';
+        }else if(event.target.files.length > 1){
+            element.innerHTML = ''
+            // event.target.files.forEach((e,i) => {
+            //     element.innerHTML += `
+            //         <img height="250px" class="" src="${URL.createObjectURL(event.target.files[i])}" alt="">
+            //     `
+            // })
+            for (let i = 0; i < event.target.files.length; i++) {
+                element.innerHTML += `
+                    <img width="200px" class="" src="${URL.createObjectURL(event.target.files[i])}" alt="">
+                `
+            }
+        }
+
+
+
+
+
+
             input.nextElementSibling.style.borderColor = '#24cf6064'
             input.nextElementSibling.style.color = '#24cf6064'
             // input.nextSibling.style.borderColor = '#24cf6064'

@@ -16,8 +16,8 @@ class HeaderhomeSeeder extends Seeder
     public function run()
     {
         Headerhome::create([
-            'title' => 'I will give you Best Product in the shortest time.',
-            'description' => 'Im a Rasalina based product design & visual designer focused on crafting clean & user‑friendly experiences',
+            'title' => 'Amr Gamal Fadl',
+            'description' => 'I graduated from the Egyptian Institute, Alexandria Academy Department Information Systems Year 2020',
             'video' => 'https://youtu.be/RTVhZamCXHw'
         ]);
     }

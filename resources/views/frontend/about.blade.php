@@ -2,6 +2,21 @@
 
 @section('pageTitle' , __('About'))
 
+@section('page_script')
+    <!-- JS here -->
+    <script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/element-in-view.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/ajax-form.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+@endsection
+
 @section('page_style')
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
@@ -60,7 +75,7 @@
                     <div class="col-lg-6">
                         <div class="about__content">
                             <div class="section__title">
-                                <span class="sub-title">01 - {{__('About')}}</span>
+                                <span class="sub-title">{{ $about->title_section }}</span>
                                 <h2 class="title">{{ $about->title }}</h2>
                             </div>
                             <div class="about__exp">
@@ -140,20 +155,4 @@
     <!-- main-area-end -->
 
 @endsection
-
-@section('page_script')
-    <!-- JS here -->
-    <script src="{{ asset('frontend/assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/imagesloaded.pkgd.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/element-in-view.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/slick.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/ajax-form.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-@endsection
-
 

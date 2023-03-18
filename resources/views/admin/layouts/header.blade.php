@@ -215,13 +215,13 @@
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="{{ route('user.index') }}" class="nav-link  {{ request()->is('dashboard/user') ? 'active' : '' }} ">
-                                <i class="nav-icon fas fa-th"></i>
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     {{ __('Users') }}
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link  {{ request()->is('dashboard/about/*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
@@ -261,6 +261,146 @@
                                             </a>
                                         </li>
                                     </ul>
+                                </li>
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('service.index') }}" class="nav-link {{ request()->is('*dashboard/service*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Service') }}
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right numOfChild">6</span>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview {{ request()->is('*dashboard/service/*') ? 'menu-open' : '' }}">
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('serviceconfig.index') }}" class="nav-link {{ request()->is('*dashboard/service/serviceconfig') ? 'active' : '' }}">
+                                                <p>
+                                                    {{ __('Service Config') }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('service.index') }}" class="nav-link {{ request()->is('*dashboard/service/service') ? 'active' : '' }}">
+                                                <p>
+                                                    {{ __('All Service') }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('servicelist.index') }}" class="nav-link {{ request()->is('*dashboard/') ? 'active' : '' }}">
+                                                <p>{{ __('List Service') }}</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('workingProcess.index') }}" class="nav-link {{ request()->is('*dashboard/workingProcess*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Working Process') }}
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right numOfChild">6</span>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview {{ request()->is('*dashboard/service/*') ? 'menu-open' : '' }}">
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('workingProcessconfig.index') }}" class="nav-link {{ request()->is('*dashboard/workingProcess/workingProcessconfig') ? 'active' : '' }}">
+                                                <p>
+                                                    {{ __('Working Process Config') }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('workingProcess.index') }}" class="nav-link {{ request()->is('*dashboard/workingProcess/workingProcess') ? 'active' : '' }}">
+                                                <p>
+                                                    {{ __('All Working Process') }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {{-- <li class="nav-item pl-3">
+                                    <a href="{{ route('titleSection.index') }}" class="nav-link {{ request()->is('*dashboard/titleSection*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Title Section') }}
+                                        </p>
+                                    </a>
+                                </li> --}}
+                                <li class="nav-item pl-3">
+                                    <a href="#" class="nav-link {{ request()->is('*dashboard/portfolio*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Portfolio') }}
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right numOfChild">6</span>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview {{ request()->is('*dashboard/portfolio/*') ? 'menu-open' : '' }}">
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('portfolioconfig.index') }}" class="nav-link {{ request()->is('*dashboard/portfolio/portfolioconfig') ? 'active' : '' }}">
+                                                <p>{{ __('Portfolio Config') }}</p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('portfolio.index') }}" class="nav-link {{ request()->is('*dashboard/portfolio/portfolio') ? 'active' : '' }}">
+                                                <p>{{__('All')}} {{ __('Portfolio') }}</p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('filter.index') }}" class="nav-link {{ request()->is('*dashboard/portfolio/filter') ? 'active' : '' }}">
+                                                <p>
+                                                    {{ __('Filter') }}
+                                                </p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('partner.index') }}" class="nav-link {{ request()->is('*dashboard/partner*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Partner') }}
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item pl-3">
+                                    <a href="#" class="nav-link {{ request()->is('*dashboard/contact*') ? 'active' : '' }}">
+                                        <p>
+                                            {{ __('Contact') }}
+                                            <i class="fas fa-angle-left right"></i>
+                                            <span class="badge badge-info right numOfChild">6</span>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview {{ request()->is('*dashboard/contact/*') ? 'menu-open' : '' }}">
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('contact.index') }}" class="nav-link {{ request()->is('*dashboard/portfolio/contact') ? 'active' : '' }}">
+                                                <p>{{ __('Contact Config') }}</p>
+                                            </a>
+                                        </li>
+                                        <li class="ml-3 nav-item">
+                                            <a href="{{ route('contactMessage.index') }}" class="nav-link {{ request()->is('*dashboard/portfolio/contactMessage') ? 'active' : '' }}">
+                                                <p>{{ __('All message') }}</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link  {{ request()->is('dashboard/setting/*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>
+                                    {{ __('Settings') }}
+                                    <i class="fas fa-angle-left right"></i>
+                                    <span class="badge badge-info right numOfChild">6</span>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview ">
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('setting.index') }}" class="nav-link">
+                                        <p>{{ __('Settings') }}</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item pl-3">
+                                    <a href="{{ route('social.index') }}" class="nav-link">
+                                        <p>{{ __('Social') }}</p>
+                                    </a>
                                 </li>
                             </ul>
                         </li>

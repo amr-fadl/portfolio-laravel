@@ -32,31 +32,27 @@
                             </li>
 
                             <!-- Role and permissions -->
-                            <li class="form-list__row mb-1">
+                            {{-- <li class="form-list__row mb-1">
                                 <!-- Role  -->
                                 <div class="form-group">
                                     <select name="user_role" class="form-control wide">
-                                        {{-- <option value="{{ __('Role') }}">{{ __('Role') }}</option> --}}
                                         @foreach ($allRole as $role)
                                             <option value="{{ $role->name }}"  {{ $user->hasRole($role->name) ? 'selected' : ''}}>{{ $role->display_name }}</option>
                                         @endforeach
                                     </select>
-                                    {{-- <label>{{ __('Role') }}</label> --}}
                                     <x-input-error :messages="$errors->get('user_role')" class="errors" />
                                 </div>
 
                                 <!-- permissions -->
                                 <div class="form-group d-flex">
                                     <select id="multiple" name="user_permissions[]" multiple class="form-control wide">
-                                        {{-- <option value="{{ __('Permissions') }}">{{ __('Permissions') }}</option> --}}
                                         @foreach ($allPerm as $permissions)
                                             <option value="{{ $permissions->name }}" {{ $user->hasPermission($permissions->name) ? 'selected' : ''}}>{{ $permissions->display_name }}</option>
                                         @endforeach
                                     </select>
-                                    {{-- <label>{{ __('Permissions') }}</label> --}}
                                     <x-input-error :messages="$errors->get('permissions')" class="errors" />
                                 </div>
-                            </li>
+                            </li> --}}
 
                             <!-- Password -->
                             <li class="form-list__row">

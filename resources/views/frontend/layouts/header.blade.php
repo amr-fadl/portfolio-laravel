@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/img/favicon.png') }}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('uploads/frontend/logo_mini.png') }}">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
@@ -15,7 +15,9 @@
         @yield('page_style')
 
     </head>
-    <body dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+    {{-- <body dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}"> --}}
+    <body>
+        @include('sweetalert::alert')
 
         <!-- preloader-start -->
         <div id="preloader">
@@ -34,39 +36,57 @@
             <div id="sticky-header" class="menu__area transparent-header">
                 <div class="container custom-container">
                     <div class="row">
-                        <div class="col-12">
-                            <div class="mobile__nav__toggler"><i class="fas fa-bars"></i></div>
-                            <div class="menu__wrap">
+                        <div class="col-12 d-flex justify-content-between">
+                            <div class="menu__wrap" style="flex: 1 1">
                                 <nav class="menu__nav">
                                     <div class="logo">
-                                        <a href="index.html" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                        <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                        <a href="index.html" class="logo__black"><img src="{{ asset('uploads/frontend/'.Settings::all()->logo) }}" alt=""></a>
+                                        {{-- <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a> --}}
                                     </div>
                                     <div class="navbar__wrap main__menu d-none d-xl-flex">
                                         <ul class="navigation">
                                             <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">{{ __('Home') }}</a></li>
                                             <li class="{{ request()->is('about') ? 'active' : '' }}"><a href="{{ url('/about') }}">{{ __('About') }}</a></li>
-                                            <li class="{{ request()->is('services') ? 'active' : '' }}"><a href="services-details.html">{{ __('Services') }}</a></li>
-                                            <li class="menu-item-has-children"><a href="#">{{ __('Portfolio') }}</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="portfolio.html">{{ __('Portfolio') }}</a></li>
-                                                    <li><a href="portfolio-details.html">{{ __('Portfolio Details') }}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="menu-item-has-children"><a href="#">{{ __('Our Blog') }}</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="blog.html">{{ __('Our News') }}</a></li>
-                                                    <li><a href="blog-details.html">{{ __('News Details') }}</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">{{ __('Contact Me') }}</a></li>
+                                            <li class="{{ request()->is('services') ? 'active' : '' }}"><a href="{{ url('/services') }}">{{ __('Services') }}</a></li>
+                                            <li class="{{ request()->is('contact') ? 'active' : '' }}"><a href="{{ url('/contact') }}">{{ __('Contact Me') }}</a></li>
                                         </ul>
                                     </div>
                                     <div class="header__btn d-none d-md-block">
-                                        <a href="contact.html" class="btn">{{ __('Contact Me') }}</a>
+                                        @if (Auth::user())
+                                            <form id="" action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn">{{ __('Logout') }}</button>
+                                            </form>
+                                        @else
+                                            <a href="{{route('login')}}" class="btn">login</a>
+                                        @endif
+                                        {{-- <a href="{{ LaravelLocalization::getLocalizedURL(App::getLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}" class="btn">{{ App::getLocale() == 'ar' ? 'english' : 'arabic'}}</a> --}}
+                                        {{-- <div class="dropdown-menu p-0 dropdown-menu-lg dropdown-menu-right" style="min-width: 100px">
+                                            @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                                                <a rel="alternate"
+                                                    class="dropdown-item {{ $localeCode == App::getLocale() ? 'active bg-secondary' : '' }}"
+                                                    hreflang="{{ $localeCode }}"
+                                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                                    <!-- Message Start -->
+                                                    <div class="media align-items-center p-1">
+                                                        <img src="{{ asset('backend/' . $properties['name'] . '.jpg') }}" alt="User Avatar"
+                                                            class="img-size-50 mr-3 img-circle"
+                                                            style="width: 30px; height:30px; object-fit: cover;">
+                                                        <div class="media-body">
+                                                            <h3 class="dropdown-item-title">
+                                                                {{ $properties['native'] }}
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Message End -->
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                            @endforeach
+                                        </div> --}}
                                     </div>
                                 </nav>
                             </div>
+                            <div class="mobile__nav__toggler d-flex d-xl-none align-items-center border-0"><i class="fas fa-bars"></i></div>
                             <!-- Mobile Menu  -->
                             <div class="mobile__menu">
                                 <nav class="menu__box">

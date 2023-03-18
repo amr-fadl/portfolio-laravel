@@ -1562,7 +1562,7 @@ label {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 0 auto 0 160px; }
+    margin: 0 auto; }
     @media (max-width: 1500px) {
       .navbar__wrap ul {
         margin: 0 auto; } }
@@ -4875,7 +4875,9 @@ Breadcrumb
 =============================*/
 .footer {
   background: #191B1E;
-  padding: 310px 0 95px; }
+  padding: 310px 0 95px;
+  padding-top: 100px;
+}
   @media (max-width: 767.98px) {
     .footer {
       padding: 310px 0 20px; } }
