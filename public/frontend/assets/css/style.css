@@ -1559,13 +1559,23 @@ label {
   display: flex;
   flex-grow: 1; }
   .navbar__wrap ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0 auto; }
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0;
+    margin-left: auto;
+}
+@media (min-width: 1500px) {
+        .navbar__wrap ul {
+            margin-right: 100px;
+        }
+    }
     @media (max-width: 1500px) {
       .navbar__wrap ul {
-        margin: 0 auto; } }
+        margin: 0 auto;
+        margin-right: 100px;
+
+    } }
     .navbar__wrap ul li {
       display: block;
       position: relative; }

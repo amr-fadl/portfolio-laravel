@@ -52,7 +52,6 @@
     }
 
     function showPrev(event , input) {
-        console.log(event.target.files);
 
         let element = document.querySelector('._img');
 

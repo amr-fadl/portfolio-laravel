@@ -58,7 +58,7 @@
                                                 <button type="submit" class="btn">{{ __('Logout') }}</button>
                                             </form>
                                         @else
-                                            <a href="{{route('login')}}" class="btn">login</a>
+                                            {{-- <a href="{{route('login')}}" class="btn">login</a> --}}
                                         @endif
                                         {{-- <a href="{{ LaravelLocalization::getLocalizedURL(App::getLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}" class="btn">{{ App::getLocale() == 'ar' ? 'english' : 'arabic'}}</a> --}}
                                         {{-- <div class="dropdown-menu p-0 dropdown-menu-lg dropdown-menu-right" style="min-width: 100px">

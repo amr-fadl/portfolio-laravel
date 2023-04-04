@@ -45,7 +45,7 @@ class HomeController extends Controller
     {
         $education = Education::all();
         $header = Headerhome::all()[0]->image;
-        $skills = Skill::all();
+        $skills = Skill::orderBy('order_skill')->get();
         $about = About::all()[0];
         return view('frontend.about' , get_defined_vars());
     }
